@@ -1,0 +1,4 @@
+/* removendo setas nos inputs de number */
+input[type=number] {
+    -moz-appearance: textfield;
+}
