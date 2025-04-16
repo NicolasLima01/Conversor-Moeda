@@ -2,13 +2,12 @@
 
 const modalAviso = new bootstrap.Modal(document.getElementById('warning-modal'), focus);
 
-//buscando parametros pela url
-const params = new URLSearchParams(window.location.search);
 
-let input1 = document.getElementById('input-1');
+//buscando parametros pela url
+let params = new URLSearchParams(window.location.search);
 
 //ocorre se não houver parametros na url
-if (params.size != 0) {
+if (params.size > 1) {
     //recebendo parametros
     const from = params.get('from'); //parametro from
     const to = params.get('to'); //parametro to
@@ -16,6 +15,10 @@ if (params.size != 0) {
     //modificando valores dos selects de acordos com o valor dos selects
     document.getElementById('select-1').value = from;
     document.getElementById('select-2').value = to;
+}
+else {
+    document.getElementById('select-1').value = 'USD';
+    document.getElementById('select-2').value = "BRL";
 }
 
 // Funcao para pegar uma opção aleatoria do select
@@ -38,12 +41,14 @@ function getRndOption(min, max, opcaoEscolhida) {
     }
 }
 
+
+let Select1 = document.getElementById('select-1');
+let Select2 = document.getElementById('select-2');
+
 // Botão de trocar moedas
 
 let btnMudaSelect = document.getElementById('btn-mudar-select');
 btnMudaSelect.addEventListener('click', function () {
-    let Select1 = document.getElementById('select-1');
-    let Select2 = document.getElementById('select-2');
 
     // RECEBENDO INDICES DOS SELECTS
     let indiceSlt1 = Select1.options[Select1.selectedIndex].index;
@@ -54,20 +59,17 @@ btnMudaSelect.addEventListener('click', function () {
     let valorSlt2 = Select2.options[Select2.selectedIndex].value;
 
     if (indiceSlt1 != indiceSlt2) {
-        // MUDANDO INDICES DOS SELECTS
-        Select1.selectedIndex = indiceSlt2;
-        Select2.selectedIndex = indiceSlt1;
         // mudando parametros da url
-        window.open('./index.php?from=' + valorSlt2 + '&to=' + valorSlt1, '_self');
+        params.set("from", valorSlt2);
+        params.set("to", valorSlt1);
+        let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
+        window.open(updatedUrl, '_self')
     } else {
         modalAviso.show();
     }
 });
 
 // Detectando indices dos selects e impedindo moedas iguais
-
-let Select1 = document.getElementById('select-1');
-let Select2 = document.getElementById('select-2');
 
 // Caso ocorra no primeiro select
 Select1.addEventListener('change', function () {
@@ -77,29 +79,30 @@ Select1.addEventListener('change', function () {
 
     // RECEBENDO VALORES DOS SELECTS
     let valorSlt1 = Select1.options[Select1.selectedIndex].value;
-    let valorSlt2 = Select2.options[Select2.selectedIndex].value;
 
     //ocorre se as opções forem iguais
     if (indiceSelect1 === indiceSelect2) {
         modalAviso.show(); //aviso de erro
 
         //Ocorre se houver parametros na url
-        if (params.size > 0) {
+        if (params.size > 1) {
+            const from = params.get('from'); //parametro from
             Select1.value = from; //recebendo valor da url
-            console.log("1");
+            console.log("foi");
         }
 
         //Ocorre se não houver parametros na url
         else {
             Select1.value = "USD";
-            console.log("2")
         }
     }
 
     //ocorre se as opções forem diferentes
     else {
         // mudando parametros da url
-        window.open('./index.php?from=' + valorSlt1 + '&to=' + valorSlt2, '_self');
+        params.set("from", valorSlt1);
+        let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
+        window.open(updatedUrl, '_self');
     }
 });
 
@@ -110,7 +113,6 @@ Select2.addEventListener('change', function () {
     indiceSelect2 = Select2.options[Select2.selectedIndex].index;
 
     // RECEBENDO VALORES DOS SELECTS
-    let valorSlt1 = Select1.options[Select1.selectedIndex].value;
     let valorSlt2 = Select2.options[Select2.selectedIndex].value;
 
     //ocorre se as opções forem iguais
@@ -118,7 +120,9 @@ Select2.addEventListener('change', function () {
         modalAviso.show(); //aviso de erro
 
         //Ocorre se houver parametros na url
-        if (params.size > 0) {
+        if (params.size > 1) {
+            //recebendo parametros
+            const to = params.get('to'); //parametro to
             Select2.value = to; //recebendo valor da url
         }
 
@@ -131,6 +135,16 @@ Select2.addEventListener('change', function () {
     //ocorre se as opções forem diferentes
     else {
         // mudando parametros da url
-        window.open('./index.php?from=' + valorSlt1 + '&to=' + valorSlt2, '_self');
+        params.set("to", valorSlt2);
+        let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
+        window.open(updatedUrl, '_self');
     }
+});
+
+// Adicionando parametro amount na url caso ocorra mudança no input 1
+let input1 = document.getElementById('input-1');
+input1.addEventListener("change", function () {
+    params.set("amount", input1.value);
+    let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
+    window.open(updatedUrl, '_self');
 });
