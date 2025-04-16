@@ -1,7 +1,18 @@
 <?php 
-if (!isset($_GET)) {
-    header ('location: ../index.php');
-}
+require "class/API.php";
+
+$currency = "USD_BRL";
+$resposta = API::Request($currency);
+
+//arrendonda o valor com precisão de dois zeros
+$cotacao = round($resposta[$currency]["price"], 2);
+echo $cotacao; 
+
+$currency = "EUR_BRL";
+$resposta = API::Request($currency);
+$cotacao = round($resposta[$currency]["price"], 2);
+echo $cotacao; 
+
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +51,9 @@ if (!isset($_GET)) {
                         <div class="input-group shadow-sm">
 
                             <form class="form-floating w-50">
-                                <input id="floatingInputDe" min="0" value='1,00' inputmode="decimal"
+                                <input id="input-1" min="0" value='1,00' inputmode="decimal" 
                                     class="form-control form-control-lg fs-4 border border-secondary border-end-0">
-                                <label for="floatingInputDe">De</label>
+                                <label for="input-1">De</label>
                             </form>
 
                             <select id="select-1"
@@ -61,8 +72,9 @@ if (!isset($_GET)) {
                         <div class="input-group shadow-sm">
 
                             <form class="form-floating w-50">
-                                <input type="number" id="floatingInputPara" min="0" readonly
-                                    class="form-control form-control-lg fs-4 border border-secondary border-end-0">
+                                <input type="number" id="floatingInputPara" min="0" readonly 
+                                value="<?php echo 1*$cotacao ?>"
+                                class="form-control form-control-lg fs-4 border border-secondary border-end-0">
                                 <label for="floatingInputPara">Para</label>
                             </form>
 
@@ -102,8 +114,11 @@ if (!isset($_GET)) {
     </div>
 </div>
 
+
 <script src="js/bootstrap.min.js"></script>
+
 <script src="js/convert.js"></script>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 </html>
