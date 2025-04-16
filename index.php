@@ -1,3 +1,9 @@
+<?php 
+if (!isset($_GET)) {
+    header ('location: ../index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -35,13 +41,13 @@
 
                             <form class="form-floating w-50">
                                 <input id="floatingInputDe" min="0" value='1,00' inputmode="decimal"
-                                    class="form-control fs-4 border border-secondary border-end-0">
+                                    class="form-control form-control-lg fs-4 border border-secondary border-end-0">
                                 <label for="floatingInputDe">De</label>
                             </form>
 
                             <select id="select-1"
                                 class="form-select form-select-lg border border-secondary border-start-0">
-                                <option value="USD">USD</option>
+                                <option selected value="USD">USD</option>
                                 <option value="BRL">BRL</option>
                                 <option value="EUR">EUR</option>
                             </select>
@@ -56,14 +62,14 @@
 
                             <form class="form-floating w-50">
                                 <input type="number" id="floatingInputPara" min="0" readonly
-                                    class="form-control fs-4 border border-secondary border-end-0">
+                                    class="form-control form-control-lg fs-4 border border-secondary border-end-0">
                                 <label for="floatingInputPara">Para</label>
                             </form>
 
                             <select id="select-2"
                                 class="form-select form-select-lg border border-secondary border-start-0">
                                 <option value="USD">USD</option>
-                                <option value="BRL">BRL</option>
+                                <option selected value="BRL">BRL</option>
                                 <option value="EUR">EUR</option>
                             </select>
                         </div>
@@ -77,7 +83,6 @@
             </div>
         </div>
     </main>
-
 </body>
 
 <!-- Modal de Aviso -->
