@@ -35,18 +35,11 @@ $cotacao = round($resposta[$currency]["price"], 2);
 
 <body>
 
-    <!-- barra de navegação -->
-    <nav class="navbar navbar-expand-lg bg-primary">
-        <div class="container-fluid">
-            <a href="index.php" class="navbar-brand">
-                <h3>Câmbio Fácil</h3>
-            </a>
-        </div>
-    </nav>
+    <?php require 'menu.php'; ?>
 
     <!-- Conteudo principal -->
-    <main class="container-fluid bg-success-subtle" style="height: 89vh">
-        <!-- linha com o tamanho total do main     -->
+    <main class="container-fluid bg-success-subtle" style="height: 80vh;">
+        <!-- linha com o tamanho total do main -->
         <div class="row h-100">
             <div class="col-10 d-flex align-items-center">
                 <div class="card bg-light w-100 py-3 ms-5">
@@ -101,10 +94,12 @@ $cotacao = round($resposta[$currency]["price"], 2);
 
             <div class=" col-2 pe-0">
                 <div class="card bg-secondary-subtle h-100 rounded-0"></div>
-
             </div>
         </div>
     </main>
+
+    <?php require 'rodape.php'; ?>
+
 </body>
 
 <!-- Modal de Aviso -->
