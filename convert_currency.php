@@ -1,7 +1,9 @@
-<?php
+<!-- <?php
 require "class/API.php";
 
 # Moedas
+$currency = 0;
+
 if (isset($_GET['from']) && isset($_GET['to'])) {
     $currency = $_GET['from'] . "_" . $_GET['to'];
 } else {
@@ -28,7 +30,14 @@ $cotacao = round($resposta[$currency]["price"], 2);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambio Fácil - Conversor de Moedas</title>
+    <!-- Titulo da página -->
+    <title>
+        <?php
+        $moedas = explode("_", $currency); //separando as moedas
+        echo ("Converter " . $moedas[0] . " para " . $moedas[1]);
+        ?>
+    </title>
+    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css"><!-- css bootstrap -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -38,25 +47,20 @@ $cotacao = round($resposta[$currency]["price"], 2);
     <?php require 'menu.php'; ?>
 
     <!-- Conteudo principal -->
-    <main class="container-fluid bg-whitw" style="height: 80vh;">
-        <!-- linha com o tamanho total do main -->
+    <main class="container-fluid bg-success-subtle" style="height: 90vh;">
+        <!-- linha com a altura total do main -->
         <div class="row h-100">
-            <div class="col-offset-2 col-8 d-flex align-items-center justify-content-end pe-0">
-                <div class="card w-100 mb-5 m">
+            <!-- coluna centralizada verticalmente e alinhado no fim horizontalmente -->
+            <div class="col-9 offset-1 d-flex align-items-center justify-content-center flex-wrap mb-5 pe-0">
 
-                    <div class="card-header px-3">
-                        <p class=" card-title fs-2">
-                            <i class="bi bi-currency-exchange"></i> Conversor de moedas
-                        </p>
-                    </div>
-
+                <div class="card bg-light mt-0 w-100 mb-5">
                     <div class="card-body px-3">
-                        <div class="d-inline-flex gap-3">
+                        <div class="d-flex justify-content-between gap-3">
 
                             <!-- Moeda 1 -->
-                            <div class="input-group shadow-sm">
+                            <div class="input-group shadow-sm flex-fill">
 
-                                <form class="form-floating w-50">
+                                <form class="form-floating w-25">
                                     <input id="input-1" min="0" inputmode="number" value="<?php echo $amount ?>"
                                         class="form-control form-control-lg fs-4 border border-secondary border-end-0">
                                     <label for="input-1">De</label>
@@ -67,17 +71,25 @@ $cotacao = round($resposta[$currency]["price"], 2);
                                     <option selected value="USD">USD </option>
                                     <option value="BRL">BRL</option>
                                     <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="ARS">ARS</option>
+                                    <option value="KRW">KRW</option>
+                                    <option value="JPY">JPY</option>
+                                    <option value="CNY">CNY</option>
+                                    <option value="AUD">AUD</option>
+                                    <option value="CAD">CAD</option>
+                                    <option value="INR">INR</option>
                                 </select>
                             </div>
 
                             <!--Botão Troca Moeda -->
                             <button type="button" id="btn-mudar-select"
-                                class="btn btn-lg btn-success">
+                                class="btn btn-lg btn-success flex-fill">
                                 <i class="bi bi-arrow-left-right"></i>
                             </button>
 
                             <!-- Moeda 2 -->
-                            <div class="input-group shadow-sm">
+                            <div class="input-group shadow-sm flex-fill">
 
                                 <form class="form-floating w-50">
                                     <input type="number" id="floatingInputPara" min="0" readonly
@@ -91,18 +103,27 @@ $cotacao = round($resposta[$currency]["price"], 2);
                                     <option value="USD">USD</option>
                                     <option selected value="BRL">BRL</option>
                                     <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="ARS">ARS</option>
+                                    <option value="KRW">KRW</option>
+                                    <option value="JPY">JPY</option>
+                                    <option value="CNY">CNY</option>
+                                    <option value="AUD">AUD</option>
+                                    <option value="CAD">CAD</option>
+                                    <option value="INR">INR</option>
                                 </select>
                             </div>
                         </div>
-                        <p class="fw-lighter my-2">
+
+                        <p class="lead my-2">
                             <?php
                             if (isset($_GET['from']) && isset($_GET['to'])) {
                                 $from = $_GET['from'];
                                 $to = $_GET['to'];
+
                                 echo '1 ' . $from . ' = ' . 1 * round($resposta[$currency]["price"], 4) . ' ' . $to;
-                            }
-                            else{
-                                echo '1 USD = ' . 1 * round($resposta[$currency]["price"], 3) . ' BRL';
+                            } else {
+                                echo '1 USD = ' . 1 * $resposta[$currency]["price"] . ' BRL';
                             }
                             ?>
                         </p>
@@ -113,6 +134,7 @@ $cotacao = round($resposta[$currency]["price"], 2);
             <div class=" col-2 pe-0">
                 <div class="card bg-secondary-subtle h-100 rounded-0"></div>
             </div>
+
         </div>
     </main>
 
@@ -144,4 +166,4 @@ $cotacao = round($resposta[$currency]["price"], 2);
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-</html>
+</html> -->
