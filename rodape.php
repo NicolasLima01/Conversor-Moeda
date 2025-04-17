@@ -1,4 +1,5 @@
-<footer class="bg-dark container-fluid d-flex justify-content-center align-items-center gap-5" style="height: 15vh;">
+<footer class="bg-dark container-fluid gap-5 py-3
+d-flex justify-content-center align-items-center flex-wrap " style="height: auto;">
 
     <div>
         <a href="#">

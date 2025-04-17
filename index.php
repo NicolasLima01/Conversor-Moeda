@@ -51,36 +51,42 @@ date_default_timezone_set('America/Sao_Paulo');
 
     <!-- Conteudo principal -->
     <main class="container-fluid bg-success-subtle" style="height: 90vh;">
+
         <!-- linha com a altura total do main -->
         <div class="row h-100">
+
             <!-- coluna centralizada verticalmente e alinhado no fim horizontalmente -->
-            <div class="col-9 offset-1 d-flex align-items-center justify-content-center flex-wrap mb-5 pe-0">
+            <div class="col-xs-11 offset-xs-0 col-sm-10 col-md-9 offset-md-1
+            d-flex align-items-center justify-content-center mb-5">
 
-
-
+                <!-- Card -->
                 <div class="card bg-light mt-0 w-100 mb-5">
-                    <div class="card-header d-flex justify-content-center-">
-                        <h1 class="display-2">
+
+                    <!-- Titulo do card -->
+                    <div class="card-header text-center">
+                        <h1 class="display-3 fw-medium">
                             <?php
                             $moedas = explode("_", $currency); //separando as moedas
                             echo ("Converter " . $moedas[0] . " para " . $moedas[1]);
                             ?>
                         </h1>
-
                     </div>
+
+                    <!-- Conteudo do card -->
                     <div class="card-body px-3">
-                        <div class="d-flex justify-content-between gap-3">
+                        <div class="d-flex justify-content-between flex-wrap flex-sm-nowrap flex-md-nowrap gap-3">
                             <!-- Moeda 1 -->
                             <div class="input-group shadow-sm flex-fill">
 
-                                <form class="form-floating w-50">
-                                    <input id="input-1" min="0" inputmode="number" value="<?php echo $amount ?>"
+                                <!-- input 1 -->
+                                <form class="form-floating w-25">
+                                    <input id="input-1" min="0" inputmode="decimal" value="<?php echo $amount ?>"
                                         class="form-control form-control-lg fs-4 border border-secondary border-end-0">
                                     <label for="input-1">De</label>
                                 </form>
-
+                                <!-- Select 1 -->
                                 <select id="select-1"
-                                    class="form-select form-select-lg border border-secondary border-start-0">
+                                    class="form-select form-select-lg border border-secondary border-start-0 text-center">
                                     <option selected value="USD">USD </option>
                                     <option value="BRL">BRL</option>
                                     <option value="EUR">EUR</option>
@@ -97,22 +103,25 @@ date_default_timezone_set('America/Sao_Paulo');
 
                             <!--Botão Troca Moeda -->
                             <button type="button" id="btn-mudar-select"
-                                class="btn btn-lg btn-success flex-fill">
+                                class="btn btn-lg btn-success flex-fill w-10">
                                 <i class="bi bi-arrow-left-right"></i>
                             </button>
 
                             <!-- Moeda 2 -->
                             <div class="input-group shadow-sm flex-fill">
 
-                                <form class="form-floating w-50">
+                                <!-- input 1 -->
+
+                                <form class="form-floating w-25">
                                     <input type="number" id="floatingInputPara" min="0" readonly
                                         value="<?php echo $amount * $cotacao ?>"
                                         class="form-control form-control-lg fs-4 border border-secondary border-end-0">
                                     <label for="floatingInputPara">Para</label>
                                 </form>
 
+                                <!-- Select 2 -->
                                 <select id="select-2"
-                                    class="form-select form-select-lg border border-secondary border-start-0">
+                                    class="form-select form-select-lg border border-secondary border-start-0 text-center">
                                     <option value="USD">USD</option>
                                     <option selected value="BRL">BRL</option>
                                     <option value="EUR">EUR</option>
@@ -129,36 +138,49 @@ date_default_timezone_set('America/Sao_Paulo');
                         </div>
 
                         <div class="d-flex justify-content-between">
-                        <p class="lead my-2">
-                            <?php
-                            if (isset($_GET['from']) && isset($_GET['to'])) {
-                                $from = $_GET['from'];
-                                $to = $_GET['to'];
 
-                                echo '1 ' . $from . ' = ' . 1 * round($resposta[$currency]["price"], 4) . ' ' . $to;
-                            } else {
-                                echo '1 USD = ' . 1 * $resposta[$currency]["price"] . ' BRL';
-                            }
-                            ?>
-                        </p>
-                        <p><small>
-                            <?php
-                            $dataInicial = date('d/m/Y H:i:s', $resposta[$currency]["timestamp"]);
-                            echo "Última Atualização " . $dataInicial;
-                            ?>
-                        </small></p>
+                            <!-- valor unitario do cambio -->
+                            <p class="lead my-2">
+                                <?php
+                                //Ocorre se houver dados na url
+                                if (isset($_GET['from']) && isset($_GET['to'])) {
+                                    $from = $_GET['from'];
+                                    $to = $_GET['to'];
+
+                                    echo '1 ' . $from . ' = ' . 1 * round($resposta[$currency]["price"], 4) . ' ' . $to;
+                                }
+                                // ocorre se não houver dados na url
+                                else {
+                                    echo '1 USD = ' . 1 * $resposta[$currency]["price"] . ' BRL';
+                                }
+                                ?>
+                            </p>
+
+                            <!-- Ultima atualização do Cambio -->
+                            <p>
+                                <small>
+                                    <?php
+                                    $dataAtualizacao = date('d/m/Y H:i:s', $resposta[$currency]["timestamp"]);
+                                    echo "Última Atualização: " . $dataAtualizacao;
+                                    ?>
+                                </small>
+                            </p>
                         </div>
                     </div>
                 </div>
+                <!-- Fim do Card -->
+
             </div>
 
-            <div class=" col-2 pe-0">
+            <!-- segunda coluna -->
+            <div class="col-xs-1 col-sm-2 col-md-2 px-0">
                 <div class="card bg-secondary-subtle h-100 rounded-0"></div>
             </div>
 
         </div>
     </main>
 
+    <!-- Rodapé -->
     <?php require 'rodape.php'; ?>
 
 </body>

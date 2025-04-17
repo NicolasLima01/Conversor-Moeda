@@ -147,7 +147,12 @@ Select2.addEventListener('change', function () {
 // Adicionando parametro amount na url caso ocorra mudança no input 1
 let input1 = document.getElementById('input-1');
 input1.addEventListener("change", function () {
-    params.set("amount", input1.value);
+    let valorInput = input1.value
+    //ocorre se houver uma vírgula
+    if (valorInput.indexOf(",") > 0) {
+        valorInput = valorInput.replace(',', '.'); //Muda a vírgula para ponto
+    }
+    params.set("amount", valorInput);
     let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
     window.open(updatedUrl, '_self');
 });
