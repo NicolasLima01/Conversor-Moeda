@@ -80,8 +80,10 @@ date_default_timezone_set('America/Sao_Paulo');
 
                                 <!-- input 1 -->
                                 <form class="form-floating w-25">
-                                    <input id="input-1" min="0" inputmode="decimal" value="<?php echo $amount ?>"
-                                        class="form-control form-control-lg fs-4 border border-secondary border-end-0">
+                                    <input class="form-control form-control-lg fs-4 border border-secondary border-end-0"
+                                    id="input-1" min="0" inputmode="decimal" value="<?php 
+                                    //muda o ponto para virgula
+                                    echo str_replace('.', ',', $amount);?>">
                                     <label for="input-1">De</label>
                                 </form>
                                 <!-- Select 1 -->
@@ -146,12 +148,14 @@ date_default_timezone_set('America/Sao_Paulo');
                                 if (isset($_GET['from']) && isset($_GET['to'])) {
                                     $from = $_GET['from'];
                                     $to = $_GET['to'];
-
-                                    echo '1 ' . $from . ' = ' . 1 * round($resposta[$currency]["price"], 4) . ' ' . $to;
+                                    $valorArredondado = round($resposta[$currency]["price"], 4);
+                                    echo "YES"; 
+                                    echo ('1 ' . $from . ' = ' . str_replace('.', ',', $valorArredondado). ' ' . $to);
                                 }
                                 // ocorre se não houver dados na url
                                 else {
-                                    echo '1 USD = ' . 1 * $resposta[$currency]["price"] . ' BRL';
+                                    $valorArredondado = round($resposta[$currency]["price"], 4);
+                                    echo ('1 USD = ' . str_replace('.', ',', $valorArredondado). ' BRL');
                                 }
                                 ?>
                             </p>
