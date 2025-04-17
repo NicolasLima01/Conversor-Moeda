@@ -38,56 +38,74 @@ $cotacao = round($resposta[$currency]["price"], 2);
     <?php require 'menu.php'; ?>
 
     <!-- Conteudo principal -->
-    <main class="container-fluid bg-success-subtle" style="height: 80vh;">
+    <main class="container-fluid bg-whitw" style="height: 80vh;">
         <!-- linha com o tamanho total do main -->
         <div class="row h-100">
-            <div class="col-10 d-flex align-items-center">
-                <div class="card bg-light w-100 py-3 ms-5">
-                    <p class="fs-2 mx-5">
-                        <i class="bi bi-currency-exchange"></i> Conversor de moedas
-                    </p>
-                    <div class="d-inline-flex mx-5 gap-3">
+            <div class="col-offset-2 col-8 d-flex align-items-center justify-content-end pe-0">
+                <div class="card w-100 mb-5 m">
 
-                        <!-- Moeda 1 -->
-                        <div class="input-group shadow-sm">
+                    <div class="card-header px-3">
+                        <p class=" card-title fs-2">
+                            <i class="bi bi-currency-exchange"></i> Conversor de moedas
+                        </p>
+                    </div>
 
-                            <form class="form-floating w-50">
-                                <input id="input-1" min="0" inputmode="number" value="<?php echo $amount ?>"
-                                    class="form-control form-control-lg fs-4 border border-secondary border-end-0">
-                                <label for="input-1">De</label>
-                            </form>
+                    <div class="card-body px-3">
+                        <div class="d-inline-flex gap-3">
 
-                            <select id="select-1"
-                                class="form-select form-select-lg border border-secondary border-start-0">
-                                <option selected value="USD">USD</option>
-                                <option value="BRL">BRL</option>
-                                <option value="EUR">EUR</option>
-                            </select>
+                            <!-- Moeda 1 -->
+                            <div class="input-group shadow-sm">
+
+                                <form class="form-floating w-50">
+                                    <input id="input-1" min="0" inputmode="number" value="<?php echo $amount ?>"
+                                        class="form-control form-control-lg fs-4 border border-secondary border-end-0">
+                                    <label for="input-1">De</label>
+                                </form>
+
+                                <select id="select-1"
+                                    class="form-select form-select-lg border border-secondary border-start-0">
+                                    <option selected value="USD">USD </option>
+                                    <option value="BRL">BRL</option>
+                                    <option value="EUR">EUR</option>
+                                </select>
+                            </div>
+
+                            <!--Botão Troca Moeda -->
+                            <button type="button" id="btn-mudar-select"
+                                class="btn btn-lg btn-success">
+                                <i class="bi bi-arrow-left-right"></i>
+                            </button>
+
+                            <!-- Moeda 2 -->
+                            <div class="input-group shadow-sm">
+
+                                <form class="form-floating w-50">
+                                    <input type="number" id="floatingInputPara" min="0" readonly
+                                        value="<?php echo $amount * $cotacao ?>"
+                                        class="form-control form-control-lg fs-4 border border-secondary border-end-0">
+                                    <label for="floatingInputPara">Para</label>
+                                </form>
+
+                                <select id="select-2"
+                                    class="form-select form-select-lg border border-secondary border-start-0">
+                                    <option value="USD">USD</option>
+                                    <option selected value="BRL">BRL</option>
+                                    <option value="EUR">EUR</option>
+                                </select>
+                            </div>
                         </div>
-
-                        <!--Botão Troca Moeda -->
-                        <button type="button" id="btn-mudar-select"
-                            class="btn btn-lg btn-success">
-                            <i class="bi bi-arrow-left-right"></i>
-                        </button>
-
-                        <!-- Moeda 2 -->
-                        <div class="input-group shadow-sm">
-
-                            <form class="form-floating w-50">
-                                <input type="number" id="floatingInputPara" min="0" readonly
-                                    value="<?php echo $amount * $cotacao ?>"
-                                    class="form-control form-control-lg fs-4 border border-secondary border-end-0">
-                                <label for="floatingInputPara">Para</label>
-                            </form>
-
-                            <select id="select-2"
-                                class="form-select form-select-lg border border-secondary border-start-0">
-                                <option value="USD">USD</option>
-                                <option selected value="BRL">BRL</option>
-                                <option value="EUR">EUR</option>
-                            </select>
-                        </div>
+                        <p class="fw-lighter my-2">
+                            <?php
+                            if (isset($_GET['from']) && isset($_GET['to'])) {
+                                $from = $_GET['from'];
+                                $to = $_GET['to'];
+                                echo '1 ' . $from . ' = ' . 1 * round($resposta[$currency]["price"], 4) . ' ' . $to;
+                            }
+                            else{
+                                echo '1 USD = ' . 1 * round($resposta[$currency]["price"], 3) . ' BRL';
+                            }
+                            ?>
+                        </p>
                     </div>
                 </div>
             </div>

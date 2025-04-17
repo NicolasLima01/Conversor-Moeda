@@ -79,6 +79,7 @@ Select1.addEventListener('change', function () {
 
     // RECEBENDO VALORES DOS SELECTS
     let valorSlt1 = Select1.options[Select1.selectedIndex].value;
+    let valorSlt2 = Select2.options[Select2.selectedIndex].value;
 
     //ocorre se as opções forem iguais
     if (indiceSelect1 === indiceSelect2) {
@@ -88,7 +89,6 @@ Select1.addEventListener('change', function () {
         if (params.size > 1) {
             const from = params.get('from'); //parametro from
             Select1.value = from; //recebendo valor da url
-            console.log("foi");
         }
 
         //Ocorre se não houver parametros na url
@@ -101,6 +101,7 @@ Select1.addEventListener('change', function () {
     else {
         // mudando parametros da url
         params.set("from", valorSlt1);
+        params.set("to", valorSlt2);
         let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
         window.open(updatedUrl, '_self');
     }
@@ -113,6 +114,7 @@ Select2.addEventListener('change', function () {
     indiceSelect2 = Select2.options[Select2.selectedIndex].index;
 
     // RECEBENDO VALORES DOS SELECTS
+    let valorSlt1 = Select1.options[Select1.selectedIndex].value;
     let valorSlt2 = Select2.options[Select2.selectedIndex].value;
 
     //ocorre se as opções forem iguais
@@ -135,6 +137,7 @@ Select2.addEventListener('change', function () {
     //ocorre se as opções forem diferentes
     else {
         // mudando parametros da url
+        params.set("from", valorSlt1);
         params.set("to", valorSlt2);
         let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
         window.open(updatedUrl, '_self');
