@@ -43,6 +43,9 @@ date_default_timezone_set('America/Sao_Paulo');
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/bootstrap.min.css"><!-- css bootstrap -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -60,11 +63,12 @@ date_default_timezone_set('America/Sao_Paulo');
             d-flex align-items-center justify-content-center mb-5">
 
                 <!-- Card -->
-                <div class="card bg-light mt-0 w-100 mb-5">
+                <div class="card bg-light border-secondary mt-0 w-100 mb-5">
 
                     <!-- Titulo do card -->
-                    <div class="card-header text-center">
-                        <h1 class="display-3 fw-medium">
+                    <div class="card-header bg-light-subtle shadow-sm text-center">
+                        <!-- Usando fonte externa -->
+                        <h1 class="exo-2 text-success-emphasis">
                             <?php
                             $moedas = explode("_", $currency); //separando as moedas
                             echo ("Converter " . $moedas[0] . " para " . $moedas[1]);
@@ -75,7 +79,8 @@ date_default_timezone_set('America/Sao_Paulo');
                     <!-- Conteudo do card -->
                     <div class="card-body px-3">
                         <div class="d-flex justify-content-between flex-wrap flex-sm-nowrap flex-md-nowrap gap-3">
-                            <!-- Moeda 1 -->
+                            
+                        <!-- Moeda 1 -->
                             <div class="input-group shadow-sm flex-fill">
 
                                 <!-- input 1 -->

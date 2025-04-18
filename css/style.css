@@ -2,3 +2,12 @@
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+/* Chamando fonte vindo do GoogleFonts */
+.exo-2{
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 60px;
+  }
