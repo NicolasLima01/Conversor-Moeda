@@ -152,8 +152,7 @@ input1.addEventListener("change", function () {
     if (valorInput.indexOf(",") > 0) {
         valorInput = valorInput.replace(',', '.'); //Muda a vírgula para ponto
     }
-    valorInput = valorInput.trim(); //retirando espaços no inicio e fim da string
-
+    valorInput = valorInput.trim().replace(/\s+/g, ''); // Remove espaços no início,meio e fim
     params.set("amount", valorInput);
     let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
     window.open(updatedUrl, '_self');
@@ -170,8 +169,8 @@ input1.addEventListener("keypress", function Enter(event) {
         if (valorInput.indexOf(",") > 0) {
             valorInput = valorInput.replace(',', '.'); //Muda a vírgula para ponto
         }
-        valorInput = valorInput.trim(); //retirando espaços no inicio e fim da string
-
+        // valorInput = valorInput.trim(); //retirando espaços no inicio e fim da string
+        valorInput = valorInput.replace(/\s+/g, ''); // Remove todos os espaços
         params.set("amount", valorInput);
         let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
         window.open(updatedUrl, '_self');
