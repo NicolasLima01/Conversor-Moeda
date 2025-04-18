@@ -146,7 +146,7 @@ date_default_timezone_set('America/Sao_Paulo');
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between flex-wrap">
 
                             <!-- valor unitario do cambio -->
                             <p class="lead my-2">
