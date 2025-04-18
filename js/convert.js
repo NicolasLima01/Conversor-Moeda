@@ -152,7 +152,28 @@ input1.addEventListener("change", function () {
     if (valorInput.indexOf(",") > 0) {
         valorInput = valorInput.replace(',', '.'); //Muda a vírgula para ponto
     }
+    valorInput = valorInput.trim(); //retirando espaços no inicio e fim da string
+
     params.set("amount", valorInput);
     let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
     window.open(updatedUrl, '_self');
+});
+
+// Ocorre quanto o usuario aperta alguma tecla no input
+input1.addEventListener("keypress", function Enter(event) {
+    //Ocorre se a tecla for Enter
+    if (event.key === "Enter") {
+        // Cancela o recarregamento da página após o enter
+        event.preventDefault();
+        let valorInput = input1.value
+        //ocorre se houver uma vírgula
+        if (valorInput.indexOf(",") > 0) {
+            valorInput = valorInput.replace(',', '.'); //Muda a vírgula para ponto
+        }
+        valorInput = valorInput.trim(); //retirando espaços no inicio e fim da string
+
+        params.set("amount", valorInput);
+        let updatedUrl = window.location.origin + window.location.pathname + "?" + params.toString();
+        window.open(updatedUrl, '_self');
+    }
 });

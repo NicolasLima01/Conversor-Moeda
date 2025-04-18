@@ -86,7 +86,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                 <!-- input 1 -->
                                 <form class="form-floating w-25">
                                     <input class="form-control form-control-lg fs-4 border border-secondary border-end-0"
-                                    id="input-1" min="0" inputmode="decimal" value="<?php 
+                                    id="input-1" min="0" inputmode="decimal" autocomplete="off" value="<?php 
                                     //muda o ponto para virgula
                                     echo str_replace('.', ',', $amount);?>">
                                     <label for="input-1">De</label>
@@ -120,7 +120,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                 <!-- input 1 -->
 
                                 <form class="form-floating w-25">
-                                    <input type="number" id="floatingInputPara" min="0" readonly
+                                    <input type="number" id="floatingInputPara" min="0" autocomplete="off" readonly
                                         value="<?php echo $amount * $cotacao ?>"
                                         class="form-control form-control-lg fs-4 border border-secondary border-end-0">
                                     <label for="floatingInputPara">Para</label>
