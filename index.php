@@ -120,7 +120,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
                                 <!-- input 1 -->
 
-                                <form class="form-floating w-25">
+                                <form class="form-floating w-25" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Apenas para leitura do valor">
                                     <input type="number" id="floatingInputPara" min="0" autocomplete="off" readonly
                                         value="<?php echo $amount * $cotacao ?>"
                                         class="form-control form-control-lg fs-4 border border-secondary border-end-0">
@@ -212,6 +212,7 @@ date_default_timezone_set('America/Sao_Paulo');
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 
 <script src="js/bootstrap.min.js"></script>
 

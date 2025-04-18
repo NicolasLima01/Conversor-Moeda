@@ -1,5 +1,9 @@
-// Criando objeto do Modal
+// Halibilitando tooltip
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
+
+// Criando objeto do Modal
 const modalAviso = new bootstrap.Modal(document.getElementById('warning-modal'), focus);
 
 
