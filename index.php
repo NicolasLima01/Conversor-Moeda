@@ -50,7 +50,7 @@ date_default_timezone_set('America/Sao_Paulo');
     <?php require 'menu.php'; ?>
 
     <!-- Conteudo principal -->
-    <main class="container-fluid bg-success-subtle" style="height: 90vh;">
+    <main class="container-fluid bg-success-subtle vh-100">
 
         <!-- linha com a altura total do main -->
         <div class="row h-100">
@@ -105,7 +105,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
                             <!--Botão Troca Moeda -->
                             <button type="button" id="btn-mudar-select"
-                                class="btn btn-lg btn-success flex-fill w-10">
+                                class="btn btn-lg btn-success mx-auto w-10 my-0">
                                 <i class="bi bi-arrow-left-right"></i>
                             </button>
 
