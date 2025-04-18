@@ -93,18 +93,19 @@ date_default_timezone_set('America/Sao_Paulo');
                                 </form>
                                 <!-- Select 1 -->
                                 <select id="select-1"
-                                    class="form-select form-select-lg border border-secondary border-start-0 text-center">
-                                    <option selected value="USD">USD </option>
-                                    <option value="BRL">BRL</option>
-                                    <option value="EUR">EUR</option>
-                                    <option value="GBP">GBP</option>
-                                    <option value="ARS">ARS</option>
-                                    <option value="KRW">KRW</option>
-                                    <option value="JPY">JPY</option>
-                                    <option value="CNY">CNY</option>
-                                    <option value="AUD">AUD</option>
-                                    <option value="CAD">CAD</option>
-                                    <option value="INR">INR</option>
+                                    class="form-select form-select-lg border border-secondary border-start-0">
+                                    <option selected value="USD">USD - Dólar Americano</option>
+                                    <option value="BRL">BRL - Real Brasileiro</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - Libra Esterlina</option>
+                                    <option value="ARS">ARS - Peso Argentino</option>
+                                    <option value="KRW">KRW - Won Sul-Koreano</option>
+                                    <option value="JPY">JPY - Ieni Japonês</option>
+                                    <option value="CNY">CNY - Yuan Chinês</option>
+                                    <option value="AUD">AUD - Dólar Australiano</option>
+                                    <option value="CAD">CAD - Dólar Canadense</option>
+                                    <option value="INR">INR - Rúpia Indiana</option>
+                                    <option value="RUB">RUB - Rublo Russo</option>
                                 </select>
                             </div>
 
@@ -128,18 +129,19 @@ date_default_timezone_set('America/Sao_Paulo');
 
                                 <!-- Select 2 -->
                                 <select id="select-2"
-                                    class="form-select form-select-lg border border-secondary border-start-0 text-center">
-                                    <option value="USD">USD</option>
-                                    <option selected value="BRL">BRL</option>
-                                    <option value="EUR">EUR</option>
-                                    <option value="GBP">GBP</option>
-                                    <option value="ARS">ARS</option>
-                                    <option value="KRW">KRW</option>
-                                    <option value="JPY">JPY</option>
-                                    <option value="CNY">CNY</option>
-                                    <option value="AUD">AUD</option>
-                                    <option value="CAD">CAD</option>
-                                    <option value="INR">INR</option>
+                                    class="form-select form-select-lg border border-secondary border-start-0 text-start">
+                                    <option value="USD">USD - Dólar Americano</option>
+                                    <option selected value="BRL">BRL - Real Brasileiro</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - Libra Esterlina</option>
+                                    <option value="ARS">ARS - Peso Argentino</option>
+                                    <option value="KRW">KRW - Won Sul-Koreano</option>
+                                    <option value="JPY">JPY - Ieni Japonês</option>
+                                    <option value="CNY">CNY - Yuan Chinês</option>
+                                    <option value="AUD">AUD - Dólar Australiano</option>
+                                    <option value="CAD">CAD - Dólar Canadense</option>
+                                    <option value="INR">INR - Rúpia Indiana</option>
+                                    <option value="RUB">RUB - Rublo Russo</option>
                                 </select>
                             </div>
                         </div>
@@ -154,7 +156,6 @@ date_default_timezone_set('America/Sao_Paulo');
                                     $from = $_GET['from'];
                                     $to = $_GET['to'];
                                     $valorArredondado = round($resposta[$currency]["price"], 4);
-                                    echo "YES"; 
                                     echo ('1 ' . $from . ' = ' . str_replace('.', ',', $valorArredondado). ' ' . $to);
                                 }
                                 // ocorre se não houver dados na url
