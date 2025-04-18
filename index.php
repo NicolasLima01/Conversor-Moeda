@@ -1,5 +1,5 @@
 <?php
-require "class/API.php";
+require ".class/API.php";
 
 # Moedas
 $currency = 0;
